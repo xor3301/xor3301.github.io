@@ -4512,7 +4512,7 @@ figure.highlight pre .javascript .function {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9999;
+  z-index: 999;
   pointer-events: none;
 }
 .medium-zoom-image--opened {
@@ -4521,6 +4521,13 @@ figure.highlight pre .javascript .function {
 }
 .medium-zoom-overlay {
   z-index: 99999 !important;
+}
+.mermaid-wrap {
+  margin: 0 0 20px;
+  text-align: center;
+}
+.mermaid-wrap > svg {
+  height: 100%;
 }
 .utterances,
 .fb-comments iframe {
