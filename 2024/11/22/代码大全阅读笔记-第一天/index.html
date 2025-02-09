@@ -1,0 +1,366 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>代码大全阅读笔记-第一天 | 政子的博客</title><meta name="author" content="政子"><meta name="copyright" content="政子"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="代码大全阅读笔记第一天​	今天读的是关于变量的命名规则那一篇。 ​	首先就是准确的命名远好过模糊的命名，这个自然不必多说，就算不学计算机也知道的常识。但是后面变量名字长短会影响阅读这段代码的人对变量在程序里的使用场景的判断这个确实第一次听说，比如较长的名字(不过也不能太长)更适合全局变量之类而较短的名字对于局部变量更适合。 ​	除此之外使用i,j,k之类的变量也要注意场景，因为i,j,k之类的变量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="代码大全阅读笔记-第一天">
+<meta property="og:url" content="http://xor3301.github.io/2024/11/22/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%B8%80%E5%A4%A9/index.html">
+<meta property="og:site_name" content="政子的博客">
+<meta property="og:description" content="代码大全阅读笔记第一天​	今天读的是关于变量的命名规则那一篇。 ​	首先就是准确的命名远好过模糊的命名，这个自然不必多说，就算不学计算机也知道的常识。但是后面变量名字长短会影响阅读这段代码的人对变量在程序里的使用场景的判断这个确实第一次听说，比如较长的名字(不过也不能太长)更适合全局变量之类而较短的名字对于局部变量更适合。 ​	除此之外使用i,j,k之类的变量也要注意场景，因为i,j,k之类的变量">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pbs.twimg.com/media/F8XjWuLaIAARxbW?format=png&name=large">
+<meta property="article:published_time" content="2024-11-22T07:41:53.000Z">
+<meta property="article:modified_time" content="2025-01-07T09:06:29.037Z">
+<meta property="article:author" content="政子">
+<meta property="article:tag" content="阅读笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pbs.twimg.com/media/F8XjWuLaIAARxbW?format=png&name=large"><link rel="shortcut icon" href="D:\Screenshots\屏幕截图 2024-11-10 203746.png"><link rel="canonical" href="http://xor3301.github.io/2024/11/22/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%B8%80%E5%A4%A9/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#e195a9","bgDark":"#c46f84","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '代码大全阅读笔记-第一天',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-color: rgb(44,53,49);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/head.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-house-user"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-radio"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/comic/"><i class="fa-fw fas fa-book"></i><span> 漫画</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw far fa-heart"></i><span> 关于</span></a></li><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw far fa-kiss"></i><span> 说说</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw far fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw far fa-kiss"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/flink/"><i class="fa-fw far fa-smile"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw far fa-folder"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-boxes"></i><span> 归档</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://pbs.twimg.com/media/F8XjWuLaIAARxbW?format=png&amp;name=large);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/LogosGithubCopilot.svg" alt="Logo"></a><a class="nav-page-title" href="/"><span class="site-name">代码大全阅读笔记-第一天</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-house-user"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-radio"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/comic/"><i class="fa-fw fas fa-book"></i><span> 漫画</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw far fa-heart"></i><span> 关于</span></a></li><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw far fa-kiss"></i><span> 说说</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw far fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw far fa-kiss"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/flink/"><i class="fa-fw far fa-smile"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw far fa-folder"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-boxes"></i><span> 归档</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">代码大全阅读笔记-第一天</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-11-22T07:41:53.000Z" title="发表于 2024-11-22 15:41:53">2024-11-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-01-07T09:06:29.037Z" title="更新于 2025-01-07 17:06:29">2025-01-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="代码大全阅读笔记"><a href="#代码大全阅读笔记" class="headerlink" title="代码大全阅读笔记"></a>代码大全阅读笔记</h1><h2 id="第一天"><a href="#第一天" class="headerlink" title="第一天"></a>第一天</h2><p>​	今天读的是关于变量的命名规则那一篇。</p>
+<p>​	首先就是准确的命名远好过模糊的命名，这个自然不必多说，就算不学计算机也知道的常识。但是后面变量名字长短会影响阅读这段代码的人对变量在程序里的使用场景的判断这个确实第一次听说，比如较长的名字(不过也不能太长)更适合全局变量之类而较短的名字对于局部变量更适合。</p>
+<p>​	除此之外使用i,j,k之类的变量也要注意场景，因为i,j,k之类的变量往往是使用于循环和数组的下标变量这件事情已经变成了大家约定俗成的事情，所以如果用到其他地方，会让阅读的人感到迷惑，大大增加了阅读的时间成本和交流成本。</p>
+<p>​	还有状态变量、临时变量、布尔变量之类的命名规则，这里我就不分段写了，一气概括吧，<strong>我会把这本书的下载链接放到这一篇的末尾，想看全篇的人去找“变量名的力量”那一章</strong>。</p>
+<pre class="mermaid">mindmap
+    root((三种变量名的命名规则))
+        root(状态变量)
+            最好可以除了使用flag之外，使用一些能够让人明白是哪个状态在改变的名字。比如可以将flag作为后缀使用end_flag或者使用例如dataready更加直抒胸臆的名字
+        (临时变量)
+            临时变量虽然大家一般习惯使用temp，不过还是建议你们能在想明白这个临时变量的具体用途之后起个更准确的名字
+        (布尔变量)
+            关于布尔变量这里有一些格外有用的名字推荐:done、error、found、success、ok。	这些名字都可以让你看你的代码时能够更快明白你当初设立这些变量是做什么用的。	比如done就是指‘做完了没有’这样的。</pre>
+
+<div class="mermaid-wrap"><pre class="mermaid-src" hidden>
+  
+  </pre></div>
+
+<p>​	这本书里既然写了那么多关于命名规则的事，当然也写了为什么要立下命名规则，当然最直接的原因肯定只有一个——<strong>效率</strong>。不论是开发效率、维护效率、阅读效率等等都会因为明确的变量名得到显著的提升。这里就拿开发时来讲吧，规范的、明确的命名能够传递的信息不只是这个变量本身的含义，还有这个变量发挥的作用，这个变量和其他变量之间的关系，而假如是你和团队一起开发的话，规范的命名带来的收益就更大了：减少交流成本；能够理解同事负责的项目；开发速度的提升之类的。即便是个人开发的话，假如你决心把你的项目做大或者你决心让你的项目长久保留下去，那么规范的名字都是或不可缺的，毕竟人的记忆是有限的，你不可能在几个月或者甚至几年后还记得你当初写下的int x到底指的什么意思。</p>
+<p>​	当然，区分你的变量也不是非得每个都要思前想后，深思熟虑，很多时候你其实可以通过前缀和后缀或者大小写的方式来区分你的变量，比如类和实例就可以通过大小写的方式来很好的区分。总之只要你觉得怎样命名对项目的开发效率是最有效的就怎样做，毕竟这个才是检验方法对不对的唯一准则。</p>
+<p>​	这本书后面关于这个名字还讲了很多，但是我这里就只挑我感兴趣的来讲了，想自己看的可以通过下面的链接来下载。(这个阅读笔记系列以后或许我会继续写，就当做是我自己的知识总结吧)</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://mail-attachment.googleusercontent.com/attachment/u/0/?ui=2&ik=6a2278fd53&attid=0.1&permmsgid=msg-f:1801798072890097273&th=190145cd0b98fe79&view=att&disp=safe&saddbat=ANGjdJ-Fjz3qjuKN98Rryij7Wd1IKQ0v9p_H45afCNk777CJBYC7mPj5jgoleflOxRDvOvhh5x1h-P0IYB6nnSopU_jdxwtQxLXSDR_CyBoJvjSmVeIhr0hVAaFi-2AzFHuP2JUtYmb3D_op7f6ggUn0tWkRz51LTRoUOJCN6WVUJ-6uzIBJ06V4dn0VC9xyV8zQwFRLP-c7FKna2XO104Up2DE37b84z8F9Npk97sx_-4ed2i9lrzWashu1cqw5rvUKZ-DGqZb6gkb7n0au_5qq83cqodywzDbGZrRwuHB7Vy2qRVwDM4vPG96TRD9KAuAWFmPcvnCQyAVRvj5_cwDpqc6ViMh093XQoqMCHDCADjR_WGwaDzXq3gkoXEHCafgDNxW9MZ9W-8Y_yTSvdYxPcUkWZVv8N_cTH9zVu7Jp9JWPZQI0SWbxvz7H61YFYmSytsT6r0kcvp1elLWeA8n1shV20R5ZkvU0mVV4CWxrYfr9IKFoIHnlChKIB1_-74Xc3xqitc8h35wrn8zU8MTgtDomEHpHigJfz8S5XHcQdI2k6fzU1f28ODIAs5jVGg2lQ4klCmf0POj5mmZjXZtuL1EWBhK3TM1im2jwT78VaSb7svJtXTjO2ds8rqsZROwAWf3Pi9ytmcybmpAbbIl2AVv2taWeqiFjvIxZ0BHZ2dh1PmlXF_jbf-aBiTZkxbmVOsOUwBXiHQgEZU3raBLoQy-bvDwNJOzTyemJP233DhMQBRk43l5bbQrbQlxtt-rHOFusIld_PqMNV74ZsP3NypsmY-FYsudw2UCVHfOGD7FlhXTTpNBGYNDI7OKNMBsHILPF1t9MxEA3J_HtXnhpR5W4nT3ekKiuN83z8J8vJKb8-C0gdX9OcjeJ1dRxe_UQpGQe0BhTHD_2sOaGS6N3PRm-OMqU7Nu4O55sTX1wVCJ-e9M5WFmskLeog4ugK6myYZ7CZ4gYn2fSNpGrlb7GoyTxOkkZNqj-oKYhAkTVh2MDcetne47FXDOg17M">代码大全下载链接</a>(这个链接是从z-lib来的，需要梯子下载)</p>
+</blockquote>
+<h2 id="第二天"><a href="#第二天" class="headerlink" title="第二天"></a>第二天</h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://xor3301.github.io">政子</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://xor3301.github.io/2024/11/22/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%B8%80%E5%A4%A9/">http://xor3301.github.io/2024/11/22/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%B8%80%E5%A4%A9/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://xor3301.github.io" target="_blank">政子的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</a></div><div class="post-share"><div class="social-share" data-image="https://pbs.twimg.com/media/F8XjWuLaIAARxbW?format=png&amp;name=large" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2024/11/13/%E6%97%A5%E8%AE%B0/" title="日记-avl树"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">日记-avl树</div></div><div class="info-2"><div class="info-item-1">AVL树    今天学习avl树：  今天是根据7.5   AVL 树 * - Hello 算法学习的       首先我们需要知道树是会退化的，在多次插入和删除操作后，二叉树可能会变成链表，接下来就给你们展示一个案例。 这里先创建一个二叉树，等会展示一下退化的二叉树。 1234567from binarytree import Nodeif __name__ == &#x27;__main__&#x27;:    root = Node(1)    root.left = Node(2)    root.right = Node(3)    root.right.left = Node(5)    root.right.right = Node(6)...</div></div></div></a><a class="pagination-related" href="/2025/02/09/love2d/" title="love2d"><img class="cover" src="https://pbs.twimg.com/media/Gffdn76bwAExTdp?format=jpg&amp;name=large" onerror="onerror=null;src='/img/sleep_2.gif'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">love2d</div></div><div class="info-2"><div class="info-item-1">哎呀还是轻量级框架好上手啊– 我用love2d的时候就这个感想，没别的。虽说这玩意几乎就是lua的一个库，跟pygame一样，但是作为年轻人(我)的第一款游戏引擎，好上手这一点我确实没话说，毕竟实在是轻的不行了，楽	当然最不好的地方就是它作为一个游戏引擎它连GUI都没得，可能真把自己当库了是吧😂，也不是说这样不好，有的人就喜欢这样，看见太繁杂的GUI他就头疼，对这种像是库一样的东西反倒感觉温馨的很，说起来我也是出于这个原因选love2d来着。– 这玩意对于新人来说我觉得还是很有帮助的，因为结构简单除去必要之物其余的几乎全都没有，所以对于游戏入门想要尽快了解游戏大概结构的人来说是个不赖的选择。不过反过来说，这个结构过于简单以至于很多东西都需要外置工具，比如地图管理器还有动画编辑之类的，当然了，你要是够闲的话也可以用这个引擎自己做个小小的地图管理器出来。 LOVE2D都做出来过什么游戏–...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/head.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">政子</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xor3301"><i class="fab fa-github"></i><span>帮我点点星标吧(owo)</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/xor3301" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:zzmark437@gmail.com" target="_blank" title="Google"><i class="fab fa-google" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://www.reddit.com/user/Otaku332/" target="_blank" title="Reddit"><i class="fab fa-reddit" style="color: # ff4500;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎你(*^▽^*)</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">代码大全阅读笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E5%A4%A9"><span class="toc-number">1.1.</span> <span class="toc-text">第一天</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%A4%A9"><span class="toc-number">1.2.</span> <span class="toc-text">第二天</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/02/09/love2d/" title="love2d"><img src="https://pbs.twimg.com/media/Gffdn76bwAExTdp?format=jpg&amp;name=large" onerror="this.onerror=null;this.src='/img/sleep_2.gif'" alt="love2d"/></a><div class="content"><a class="title" href="/2025/02/09/love2d/" title="love2d">love2d</a><time datetime="2025-02-09T06:33:00.000Z" title="发表于 2025-02-09 14:33:00">2025-02-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/22/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%B8%80%E5%A4%A9/" title="代码大全阅读笔记-第一天"><img src="https://pbs.twimg.com/media/F8XjWuLaIAARxbW?format=png&amp;name=large" onerror="this.onerror=null;this.src='/img/sleep_2.gif'" alt="代码大全阅读笔记-第一天"/></a><div class="content"><a class="title" href="/2024/11/22/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%B8%80%E5%A4%A9/" title="代码大全阅读笔记-第一天">代码大全阅读笔记-第一天</a><time datetime="2024-11-22T07:41:53.000Z" title="发表于 2024-11-22 15:41:53">2024-11-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/13/%E6%97%A5%E8%AE%B0/" title="日记-avl树">日记-avl树</a><time datetime="2024-11-13T10:13:46.000Z" title="发表于 2024-11-13 18:13:46">2024-11-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/09/hello-world-1/" title="hello world">hello world</a><time datetime="2024-11-09T15:34:06.000Z" title="发表于 2024-11-09 23:34:06">2024-11-09</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://pbs.twimg.com/media/F8XjWuLaIAARxbW?format=png&amp;name=large);"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By 政子</div><script type="text/javascript" id="maid-script" src="https://unpkg.com/mermaid@undefined/dist/mermaid.min.js?v=undefined"></script><script>if (window.mermaid) {
+  var options = JSON.parse(document.getElementById('maid-script').getAttribute('mermaidoptioins'));
+  mermaid.initialize(options);
+}</script><div class="footer_custom_text">Ciallo～ (∠・ω< )⌒★</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>(() => {
+  const panguFn = () => {
+    if (typeof pangu === 'object') pangu.autoSpacingPage()
+    else {
+      btf.getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+        .then(() => {
+          pangu.autoSpacingPage()
+        })
+    }
+  }
+
+  const panguInit = () => {
+    if (false){
+      GLOBAL_CONFIG_SITE.isPost && panguFn()
+    } else {
+      panguFn()
+    }
+  }
+
+  btf.addGlobalFn('pjaxComplete', panguInit, 'pangu')
+  document.addEventListener('DOMContentLoaded', panguInit)
+})()</script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
+  const option = null
+
+  const getGiscusTheme = theme => theme === 'dark' ? 'dark_dimmed' : 'light'
+
+  const createScriptElement = config => {
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => {
+      ele.setAttribute(key, value)
+    })
+    return ele
+  }
+
+  const loadGiscus = (el = document, key) => {
+    const mappingConfig = isShuoshuo
+      ? { 'data-mapping': 'specific', 'data-term': key }
+      : { 'data-mapping': (option && option['data-mapping']) || 'pathname' }
+
+    const giscusConfig = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'xor3301/xor3301.github.io',
+      'data-repo-id': 'R_kgDONLFn_w',
+      'data-category-id': 'DIC_kwDONLFn_84CkKru',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      ...mappingConfig
+    }
+
+    const scriptElement = createScriptElement(giscusConfig)
+
+    el.querySelector('#giscus-wrap').appendChild(scriptElement)
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGiscus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const changeGiscusTheme = theme => {
+    const iframe = document.querySelector('#giscus-wrap iframe')
+    if (iframe) {
+      const message = {
+        giscus: {
+          setConfig: {
+            theme: getGiscusTheme(theme)
+          }
+        }
+      }
+      iframe.contentWindow.postMessage(message, 'https://giscus.app')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if (isShuoshuo) {
+    'Giscus' === 'Giscus'
+      ? window.shuoshuoComment = { loadComment: loadGiscus }
+      : window.loadOtherComment = loadGiscus
+    return
+  }
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["link[rel=\"canonical\"]","meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      pjax.loadUrl('/404.html')
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
